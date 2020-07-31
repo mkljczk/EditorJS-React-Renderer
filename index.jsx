@@ -19,6 +19,7 @@
 
 //#region imports
 import React from 'react';
+import GoogleAdOutput from './renderers/googleAdOutput/index.jsx';
 import HeaderOutput from './renderers/headerOutput/index.jsx';
 import ParagraphOutput from './renderers/paragraphOutput/index.jsx';
 import ImageOutput from './renderers/imageOutput/index.jsx';
@@ -39,6 +40,7 @@ const Output = ({ data, style, config }) => {
 
   return data.blocks.map((block, index) => {
     switch (block.type) {
+      case 'googleAd': return <GoogleAdOutput key={ index } data={ block.data } style={ style.codeBox || {}} config={ config.codeBox || {}} />;
       case 'codeBox': return <CodeBoxOutput key={ index } data={ block.data } style={ style.codeBox || {}} config={ config.codeBox || {}} />;
       case 'header': return <HeaderOutput key={ index } data={ block.data } style={ style.header || {}} config={ config.header || {}} />;
       case 'paragraph':
@@ -59,6 +61,6 @@ const Output = ({ data, style, config }) => {
 };
 
 export {
-  HeaderOutput, ParagraphOutput, ImageOutput, EmbedOutput, TableOutput, CodeBoxOutput, ListOutput, QuoteOutput,
+  GoogleAdOutput, HeaderOutput, ParagraphOutput, ImageOutput, EmbedOutput, TableOutput, CodeBoxOutput, ListOutput, QuoteOutput,
   ChecklistOutput, WarningOutput, DelimiterOutput, Output as default
 };
